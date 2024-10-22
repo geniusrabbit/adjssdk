@@ -28,6 +28,10 @@ build-dev: ## Build the project in development mode
 build-none: ## Build the project without minification
 	npm run build:none
 
+.PHONY: watch-css
+watch-css: ## Watch the css files
+	npm run watch:css
+
 .PHONY: build-docker
 build-docker: build-none ## Build the docker image
 	@echo "Build docker image"

@@ -16,3 +16,29 @@ Opensource advertisement render SDK for Web
 })();
 </script>
 ```
+
+> TODO
+
+```html
+<script type="text/javascript" async src="https://domain.cdn/ads.js?client=ra-pub-84882993766123"  crossorigin="anonymous"></script>
+<ins
+  style="display:block"
+  data-rad-client="ra-pub-84882993766123"
+  data-rad-slot="278774663878"
+  data-rad-format="auto"
+  data-full-width-responsive="true"><!--
+
+  // IN COMMENT: Default advertisement code if no ad is available ...
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4400168223356384" crossorigin="anonymous"></script>
+  <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-4400168223356384"
+    data-ad-slot="1760661772"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script>
+
+--></ins>
+```

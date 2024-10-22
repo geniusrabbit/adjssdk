@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Game News Hub</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Tailwind Dark Mode Configuration -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class', // Enable class-based dark mode
+      theme: {
+        extend: {
+          colors: {
+            // Customize colors if needed
+          },
+        },
+      },
+      variants: {},
+      plugins: [],
+    }
+  </script>
+</head>
+<body class="bg-gray-100 text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Banner Section -->
+  <header class="bg-blue-600 text-white dark:bg-blue-800">
+    <div class="container mx-auto flex flex-col lg:flex-row justify-between items-center p-4">
+      <div class="flex items-center justify-between w-full lg:w-auto">
+        <h1 class="text-2xl font-bold">Game News Hub</h1>
+        <!-- Dark Mode Toggle -->
+        <button id="dark-mode-toggle" class="ml-4 focus:outline-none">
+          <!-- Sun Icon -->
+          <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.66-8.66h-1M4.34 12.34h-1m15.364 4.95l-.707-.707M6.343 6.343l-.707-.707m12.02 0l-.707.707M6.343 17.657l-.707.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+          <!-- Moon Icon -->
+          <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" />
+          </svg>
+        </button>
+      </div>
+      <nav class="mt-4 lg:mt-0">
+        <a href="#featured-news" class="mx-2 hover:text-gray-300 dark:hover:text-gray-200">Featured</a>
+        <a href="#latest-news" class="mx-2 hover:text-gray-300 dark:hover:text-gray-200">News</a>
+        <a href="#latest-reviews" class="mx-2 hover:text-gray-300 dark:hover:text-gray-200">Reviews</a>
+        <a href="#upcoming-releases" class="mx-2 hover:text-gray-300 dark:hover:text-gray-200">Releases</a>
+        <a href="#contact" class="mx-2 hover:text-gray-300 dark:hover:text-gray-200">Contact</a>
+      </nav>
+    </div>
+    <!-- Search Bar -->
+    <div class="container mx-auto p-4">
+      <form class="flex justify-center">
+        <input type="text" placeholder="Search games, reviews..." class="w-full max-w-md px-4 py-2 rounded-l-full border-t mr-0 border-b border-l text-gray-800 dark:text-gray-100 dark:bg-gray-800 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <button type="submit" class="px-4 rounded-r-full bg-blue-500 text-white font-semibold border-blue-500 border-t border-b border-r hover:bg-blue-600 focus:outline-none dark:bg-blue-600 dark:border-blue-600">
+          Search
+        </button>
+      </form>
+    </div>
+    <!-- Categories Navigation -->
+    <div class="container mx-auto p-4">
+      <div class="flex flex-wrap justify-center">
+        <a href="#" class="m-2 px-4 py-2 bg-blue-100 text-blue-800 rounded-full text-sm hover:bg-blue-200 dark:bg-blue-800 dark:text-blue-200 dark:hover:bg-blue-700">Action</a>
+        <a href="#" class="m-2 px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm hover:bg-green-200 dark:bg-green-800 dark:text-green-200 dark:hover:bg-green-700">Adventure</a>
+        <a href="#" class="m-2 px-4 py-2 bg-red-100 text-red-800 rounded-full text-sm hover:bg-red-200 dark:bg-red-800 dark:text-red-200 dark:hover:bg-red-700">RPG</a>
+        <a href="#" class="m-2 px-4 py-2 bg-yellow-100 text-yellow-800 rounded-full text-sm hover:bg-yellow-200 dark:bg-yellow-800 dark:text-yellow-200 dark:hover:bg-yellow-700">Strategy</a>
+        <a href="#" class="m-2 px-4 py-2 bg-purple-100 text-purple-800 rounded-full text-sm hover:bg-purple-200 dark:bg-purple-800 dark:text-purple-200 dark:hover:bg-purple-700">Multiplayer</a>
+        <a href="#" class="m-2 px-4 py-2 bg-pink-100 text-pink-800 rounded-full text-sm hover:bg-pink-200 dark:bg-pink-800 dark:text-pink-200 dark:hover:bg-pink-700">Indie</a>
+        <!-- Add more categories as needed -->
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-4">
+    <div class="flex flex-col lg:flex-row">
+      
+      <!-- News List -->
+      <section class="w-full lg:w-3/4 lg:pr-4">
+        
+        <!-- Featured News Section -->
+        <div id="featured-news" class="mb-8">
+          <h2 class="text-2xl font-semibold mb-4">Featured News</h2>
+          <div class="bg-white dark:bg-gray-800 shadow-lg rounded-lg overflow-hidden flex flex-col lg:flex-row transition-colors duration-300">
+            <!-- Featured Image -->
+            <div class="lg:w-1/2">
+              <img src="https://live.staticflickr.com/65535/49606120068_fc5ba8f190_z.jpg" alt="Featured News Image" class="w-full h-full object-cover">
+            </div>
+            <!-- Featured Content -->
+            <div class="lg:w-1/2 p-6 flex flex-col justify-center">
+              <h3 class="text-xl font-bold mb-2 dark:text-white">Exclusive Interview with the Creators of "Epic Quest"</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-4">Get an inside look into the development of "Epic Quest" with our exclusive interview featuring the game's creators. Learn about the challenges, inspirations, and future plans for the beloved RPG.</p>
+              <a href="#" class="text-blue-500 hover:underline font-semibold dark:text-blue-400">Read More &rarr;</a>
+            </div>
+          </div>
+        </div>
+        <!-- End of Featured News Section -->
+
+        <!-- Latest News Section -->
+        <div id="latest-news" class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Latest Game News</h2>
+          
+          <!-- News Item 1 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+            <h3 class="text-lg font-bold dark:text-white">New Update Released for "Epic Quest"</h3>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">Developers have just released a major update for "Epic Quest," introducing new levels, characters, and features. Players are excited about the enhancements and can't wait to explore the new content.</p>
+            <a href="#" class="text-blue-500 hover:underline mt-4 inline-block dark:text-blue-400">Read More &rarr;</a>
+          </div>
+
+          <!-- News Item 2 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+            <h3 class="text-lg font-bold dark:text-white">"Space Battles" Scheduled for Launch Next Month</h3>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">The highly anticipated game "Space Battles" is set to launch next month. Gamers are looking forward to its innovative gameplay mechanics and stunning graphics.</p>
+            <a href="#" class="text-blue-500 hover:underline mt-4 inline-block dark:text-blue-400">Read More &rarr;</a>
+          </div>
+
+          <!-- Advertisement Banner in Center -->
+          <div class="bg-gray-200 dark:bg-gray-700 shadow-md rounded-lg p-4 mb-4 flex flex-col items-center transition-colors duration-300">
+            <span class="text-sm text-gray-500 dark:text-gray-400 mb-2">Advertisement</span>
+            <a href="#" class="block w-full">
+              <img src="https://via.placeholder.com/728x90.png?text=Advertisement" alt="Advertisement Banner" class="w-full h-auto rounded">
+            </a>
+            <ins class="myads"
+              style="display:block"
+              data-ad-slot="2nkBXMzDH71gxXKlBxH9GiG8eGc"
+              data-ad-format="auto"
+              data-full-width-responsive="true">
+              <script type="html/template">
+                <a href="{{ad.link}}" target="_blank">
+                  <img src="{{ad.image}}" alt="{{ad.title}}" class="w-full h-auto rounded">
+                </a>
+              </script>  
+            </ins>
+          </div>
+
+          <!-- News Item 3 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+            <h3 class="text-lg font-bold dark:text-white">Esports Tournament Announced for "Battle Royale"</h3>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">An international esports tournament for "Battle Royale" has been announced, featuring prize pools exceeding $100,000. Top teams from around the world will compete for the championship title.</p>
+            <a href="#" class="text-blue-500 hover:underline mt-4 inline-block dark:text-blue-400">Read More &rarr;</a>
+          </div>
+
+          <!-- Add more news items as needed -->
+        </div>
+        <!-- End of Latest News Section -->
+
+        <!-- Latest Reviews Section -->
+        <div id="latest-reviews" class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Latest Reviews</h2>
+          
+          <!-- Review Item 1 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 flex flex-col sm:flex-row transition-colors duration-300">
+            <img src="https://via.placeholder.com/150x100.png?text=Review+Image" alt="Game Review Image" class="w-full sm:w-1/3 h-24 object-cover rounded">
+            <div class="mt-4 sm:mt-0 sm:ml-4">
+              <h3 class="text-lg font-bold dark:text-white">"Epic Quest" Review</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-2">Dive into our comprehensive review of "Epic Quest," exploring its gameplay mechanics, story, and overall experience.</p>
+              <a href="#" class="text-blue-500 hover:underline mt-2 inline-block dark:text-blue-400">Read More &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Review Item 2 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 flex flex-col sm:flex-row transition-colors duration-300">
+            <img src="https://via.placeholder.com/150x100.png?text=Review+Image" alt="Game Review Image" class="w-full sm:w-1/3 h-24 object-cover rounded">
+            <div class="mt-4 sm:mt-0 sm:ml-4">
+              <h3 class="text-lg font-bold dark:text-white">"Space Battles" Review</h3>
+              <p class="text-gray-600 dark:text-gray-300 mt-2">Our in-depth review of "Space Battles" covers its innovative features and how it stands out in the competitive space game market.</p>
+              <a href="#" class="text-blue-500 hover:underline mt-2 inline-block dark:text-blue-400">Read More &rarr;</a>
+            </div>
+          </div>
+
+          <!-- Add more review items as needed -->
+        </div>
+        <!-- End of Latest Reviews Section -->
+
+        <!-- Upcoming Releases Section -->
+        <div id="upcoming-releases" class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Upcoming Releases</h2>
+          
+          <!-- Release Item 1 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+            <h3 class="text-lg font-bold dark:text-white">"Dragon Slayer" - Release Date: December 2024</h3>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">Prepare yourself for the epic adventure of "Dragon Slayer," set to release this December with groundbreaking graphics and immersive gameplay.</p>
+            <a href="#" class="text-blue-500 hover:underline mt-2 inline-block dark:text-blue-400">Read More &rarr;</a>
+          </div>
+
+          <!-- Release Item 2 -->
+          <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+            <h3 class="text-lg font-bold dark:text-white">"Mystic Lands" - Release Date: January 2025</h3>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">Explore the enchanting world of "Mystic Lands," launching in January 2025. Discover new characters, quests, and magical realms.</p>
+            <a href="#" class="text-blue-500 hover:underline mt-2 inline-block dark:text-blue-400">Read More &rarr;</a>
+          </div>
+
+          <!-- Add more upcoming releases as needed -->
+        </div>
+        <!-- End of Upcoming Releases Section -->
+
+        <!-- Contact Form Section -->
+        <div id="contact" class="mb-8">
+          <h2 class="text-xl font-semibold mb-4">Contact Us</h2>
+          <form class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 max-w-lg mx-auto transition-colors duration-300">
+            <div class="mb-4">
+              <label for="name" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+            </div>
+            <div class="mb-4">
+              <label for="email" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100">
+            </div>
+            <div class="mb-4">
+              <label for="message" class="block text-gray-700 dark:text-gray-300 font-semibold mb-2">Message</label>
+              <textarea id="message" name="message" rows="4" placeholder="Your Message" class="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-gray-100"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-blue-600 dark:bg-blue-700 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 dark:hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500">
+              Send Message
+            </button>
+          </form>
+        </div>
+        <!-- End of Contact Form Section -->
+
+      </section>
+
+      <!-- Sidebar with Tags, Advertisement, Social Media, and Most Read News -->
+      <aside class="w-full lg:w-1/4 lg:pl-4 mt-8 lg:mt-0">
+        
+        <!-- Tags Section -->
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+          <h2 class="text-xl font-semibold mb-4 dark:text-white">Tags</h2>
+          <div class="flex flex-wrap">
+            <!-- Tag Items -->
+            <a href="#" class="bg-blue-100 dark:bg-blue-800 text-blue-800 dark:text-blue-200 px-3 py-1 m-1 rounded-full text-sm hover:bg-blue-200 dark:hover:bg-blue-700">Action</a>
+            <a href="#" class="bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-200 px-3 py-1 m-1 rounded-full text-sm hover:bg-green-200 dark:hover:bg-green-700">Adventure</a>
+            <a href="#" class="bg-red-100 dark:bg-red-800 text-red-800 dark:text-red-200 px-3 py-1 m-1 rounded-full text-sm hover:bg-red-200 dark:hover:bg-red-700">RPG</a>
+            <a href="#" class="bg-yellow-100 dark:bg-yellow-800 text-yellow-800 dark:text-yellow-200 px-3 py-1 m-1 rounded-full text-sm hover:bg-yellow-200 dark:hover:bg-yellow-700">Strategy</a>
+            <a href="#" class="bg-purple-100 dark:bg-purple-800 text-purple-800 dark:text-purple-200 px-3 py-1 m-1 rounded-full text-sm hover:bg-purple-200 dark:hover:bg-purple-700">Multiplayer</a>
+            <a href="#" class="bg-pink-100 dark:bg-pink-800 text-pink-800 dark:text-pink-200 px-3 py-1 m-1 rounded-full text-sm hover:bg-pink-200 dark:hover:bg-pink-700">Indie</a>
+            <!-- Add more tags as needed -->
+          </div>
+        </div>
+
+        <!-- Advertisement Banner in Sidebar -->
+        <div class="bg-gray-200 dark:bg-gray-700 shadow-md rounded-lg p-4 mb-4 flex flex-col items-center transition-colors duration-300">
+          <span class="text-sm text-gray-500 dark:text-gray-400 mb-2">Advertisement</span>
+          <a href="#" class="block w-full">
+            <img src="https://via.placeholder.com/300x250.png?text=Advertisement" alt="Sidebar Advertisement" class="w-full h-auto rounded">
+          </a>
+          <!-- Native Banner Component -->
+          <a href="https://your-destination-link.com" class="max-w-4xl mx-auto my-8 p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg flex flex-col lg:flex-row items-center transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+            
+            <!-- Баннерное Изображение -->
+            <div class="w-full lg:w-1/2">
+              <img src="https://via.placeholder.com/600x400.png?text=Banner+Image" alt="Banner Image" class="w-full h-full object-cover rounded-lg">
+            </div>
+            
+            <!-- Содержимое Баннера -->
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0 lg:ml-6">
+              <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100">Откройте для себя наш новый продукт</h2>
+              <p class="mt-2 text-gray-600 dark:text-gray-300">Испытайте лучшие функции и непревзойдённую производительность с нашим новым выпуском. Разработан для удовлетворения всех ваших потребностей и превосходства ожиданий.</p>
+              <div class="mt-4">
+                <p class="text-lg font-semibold text-blue-500 dark:text-blue-400">Позвоните нам: +1 234 567 890</p>
+                <p class="mt-1 text-sm text-gray-500 dark:text-gray-400">BrandName</p>
+              </div>
+            </div>
+            
+          </a>
+          <!-- End of Native Banner Component -->
+          <ins class="myads"
+            style="display:block"
+            data-ad-slot="2nkBXMzDH71gxXKlBxH9GiG8eGc"
+            data-ad-format="auto"
+            data-full-width-responsive="true">
+            <script type="html/template" data-type="native">
+              <a href="{{url}}" target="_blank" class="max-w-4xl mx-auto rounded bg-white dark:bg-gray-800 shadow-lg rounded-lg transition-colors duration-300 hover:bg-gray-100 dark:hover:bg-gray-700">
+                <img src="{{mainAsset.path}}" alt="{{fields.title}}" class="w-full h-auto rounded" />
+                {{?fields.title}}<h2>{{fields.title}}</h2>{{/?}}
+                {{?fields.description}}<p>{{fields.description}}</p>{{/?}}
+              </a>
+            </script>
+          </ins>
+        </div>
+
+        <!-- Social Media Links -->
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+          <h2 class="text-xl font-semibold mb-4 dark:text-white">Follow Us</h2>
+          <div class="flex space-x-4 justify-center">
+            <!-- Facebook -->
+            <a href="#" class="text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-600" aria-label="Facebook">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M22.675 0h-21.35C.597 0 0 .597 0 1.325v21.351C0 23.403.597 24 1.325 24h11.495v-9.294H9.691v-3.622h3.129V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.464.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.312h3.587l-.467 3.622h-3.12V24h6.116C23.403 24 24 23.403 24 22.676V1.325C24 .597 23.403 0 22.675 0z"/>
+              </svg>
+            </a>
+            <!-- Twitter -->
+            <a href="#" class="text-blue-400 hover:text-blue-600 dark:text-blue-300 dark:hover:text-blue-500" aria-label="Twitter">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 4.557a9.93 9.93 0 0 1-2.828.775A4.932 4.932 0 0 0 23.337 3.1a9.864 9.864 0 0 1-3.127 1.195A4.916 4.916 0 0 0 16.616 3c-2.72 0-4.924 2.204-4.924 4.924 0 .386.044.762.128 1.124C7.728 8.824 4.1 6.853 1.671 3.149a4.822 4.822 0 0 0-.666 2.475c0 1.708.87 3.216 2.188 4.099a4.904 4.904 0 0 1-2.228-.616c-.054 1.998 1.396 3.873 3.445 4.28a4.935 4.935 0 0 1-2.224.084c.63 1.953 2.445 3.376 4.6 3.416A9.867 9.867 0 0 1 0 19.54a13.945 13.945 0 0 0 7.548 2.209c9.056 0 14.01-7.496 14.01-13.986 0-.213-.005-.425-.014-.636A10.025 10.025 0 0 0 24 4.557z"/>
+              </svg>
+            </a>
+            <!-- Instagram -->
+            <a href="#" class="text-pink-600 hover:text-pink-800 dark:text-pink-400 dark:hover:text-pink-600" aria-label="Instagram">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.366.062 2.633.332 3.608 1.308.975.975 1.246 2.242 1.308 3.608.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.062 1.366-.332 2.633-1.308 3.608-.975.975-2.242 1.246-3.608 1.308-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.366-.062-2.633-.332-3.608-1.308-.975-.975-1.246-2.242-1.308-3.608C2.175 15.747 2.163 15.367 2.163 12s.012-3.584.07-4.85c.062-1.366.332-2.633 1.308-3.608.975-.975 2.242-1.246 3.608-1.308C8.416 2.175 8.796 2.163 12 2.163zm0-2.163C8.741 0 8.332.014 7.052.072 5.775.129 4.603.398 3.678 1.324c-.925.925-1.194 2.097-1.251 3.374C2.014 6.332 2 6.741 2 12s.014 5.668.072 6.948c.057 1.277.326 2.449 1.251 3.374.925.925 2.097 1.194 3.374 1.251C8.332 23.986 8.741 24 12 24s3.668-.014 4.948-.072c1.277-.057 2.449-.326 3.374-1.251.925-.925 1.194-2.097 1.251-3.374.058-1.28.072-1.689.072-6.948s-.014-5.668-.072-6.948c-.057-1.277-.326-2.449-1.251-3.374C19.397.398 18.225.129 16.948.072 15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zm0 10.162a3.999 3.999 0 1 1 0-7.998 3.999 3.999 0 0 1 0 7.998zm6.406-11.845a1.44 1.44 0 1 0 0 2.88 1.44 1.44 0 0 0 0-2.88z"/>
+              </svg>
+            </a>
+            <!-- YouTube -->
+            <a href="#" class="text-red-600 hover:text-red-800 dark:text-red-400 dark:hover:text-red-600" aria-label="YouTube">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M23.498 6.186a2.98 2.98 0 0 0-2.098-2.1C19.653 3.6 12 3.6 12 3.6s-7.653 0-9.4.486A2.98 2.98 0 0 0 .502 6.186C0 8.034 0 12 0 12s0 3.966.502 5.814a2.98 2.98 0 0 0 2.098 2.1c1.747.486 9.4.486 9.4.486s7.653 0 9.4-.486a2.98 2.98 0 0 0 2.098-2.1C24 15.966 24 12 24 12s0-3.966-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Most Read News -->
+        <div class="bg-white dark:bg-gray-800 shadow-md rounded-lg p-6 mb-4 transition-colors duration-300">
+          <h2 class="text-xl font-semibold mb-4 dark:text-white">Most Read</h2>
+          <ul>
+            <!-- Most Read News Item 1 -->
+            <li class="mb-3">
+              <a href="#" class="text-blue-500 hover:underline dark:text-blue-400">Top 10 RPG Games of 2024</a>
+              <p class="text-gray-600 dark:text-gray-300 text-sm">Discover the best RPG games that have captured players' hearts this year.</p>
+            </li>
+            <!-- Most Read News Item 2 -->
+            <li class="mb-3">
+              <a href="#" class="text-blue-500 hover:underline dark:text-blue-400">Ultimate Guide to "Space Battles"</a>
+              <p class="text-gray-600 dark:text-gray-300 text-sm">Everything you need to know to excel in the upcoming "Space Battles" game.</p>
+            </li>
+            <!-- Most Read News Item 3 -->
+            <li class="mb-3">
+              <a href="#" class="text-blue-500 hover:underline dark:text-blue-400">Esports: The Rise of "Battle Royale"</a>
+              <p class="text-gray-600 dark:text-gray-300 text-sm">An in-depth look at how "Battle Royale" became a staple in the esports scene.</p>
+            </li>
+            <!-- Add more most read items as needed -->
+          </ul>
+        </div>
+
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white dark:bg-blue-800">
+    <div class="container mx-auto p-4 text-center">
+      &copy; 2024 Game News Hub. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Dark Mode Toggle Script -->
+  <script>
+    const toggleButton = document.getElementById('dark-mode-toggle');
+    const sunIcon = document.getElementById('sun-icon');
+    const moonIcon = document.getElementById('moon-icon');
+    const htmlElement = document.documentElement;
+
+    // Check for saved user preference, if any, on load of the website
+    if (localStorage.getItem('theme') === 'dark') {
+      htmlElement.classList.add('dark');
+      sunIcon.classList.remove('hidden');
+      moonIcon.classList.add('hidden');
+    }
+
+    toggleButton.addEventListener('click', () => {
+      htmlElement.classList.toggle('dark');
+      if (htmlElement.classList.contains('dark')) {
+        localStorage.setItem('theme', 'dark');
+        sunIcon.classList.remove('hidden');
+        moonIcon.classList.add('hidden');
+      } else {
+        localStorage.setItem('theme', 'light');
+        sunIcon.classList.add('hidden');
+        moonIcon.classList.remove('hidden');
+      }
+    });
+  </script>
+  <!-- Advertisement Script -->
+  <script src="../dist/ads.js"></script>
+  <script type="text/javascript">
+    pads.amgConfigure(function(mn) {
+      mn.setMapper("ins.myads", {
+        srcURL: "http://localhost:7077/b/dynamic/{<id>}?format=jsonp",
+        /*dataParams: {
+          slot: "data-ad-slot",
+          format: "data-ad-format",
+          fullWidth: "data-full-width-responsive",
+        },*/
+      });
+    });
+  </script>
+
+</body>
+</html>

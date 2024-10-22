@@ -6,8 +6,8 @@ module.exports = env => {
     entry: './src/index.js',
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: 'embedded.js',
-      library: 'EmbeddedAd',
+      filename: 'ads.js',
+      library: 'pads',
       libraryTarget: 'umd',
       globalObject: 'window',
       libraryExport: 'default',

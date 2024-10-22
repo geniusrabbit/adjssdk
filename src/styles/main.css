@@ -1,0 +1,6 @@
+.root_block {
+  color: red;
+}
+  .root_block .another_block {
+    color: blue;
+  }
