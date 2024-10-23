@@ -6,7 +6,7 @@ import { EmbeddedAd } from './path-to-embedded-ad';
 // Create a new EmbeddedAd instance with custom settings
 const ad = new EmbeddedAd({
   element: 'ad-container', // ID of the DOM element where the ad will be rendered
-  zone_id: '12345',        // Your ad zone ID
+  spot_id: '12345',        // Your ad spot ID
   JSONPLink: 'https://ads.example.com/getAd', // Your JSONP endpoint
 });
 
@@ -48,8 +48,8 @@ const defaultConfig = {
   // DOM element where the ad will be rendered; initially null
   element: null,
 
-  // Zone ID for ad targeting; initially null
-  zone_id: null,
+  // Spot ID for ad targeting; initially null
+  spot_id: null,
 
   // Instance of the Render class responsible for rendering ads
   render: new Render(),
@@ -214,7 +214,7 @@ export class EmbeddedAd {
     // Create a script element for the JSONP request
     var sc = this.JSONPScript = document.createElement('script');
     sc.src = this.settings.JSONPLink
-      .replace('{<id>}', this.settings.zone_id + '') // Replace placeholder with zone ID
+      .replace('{<id>}', this.settings.spot_id + '') // Replace placeholder with spot ID
       + this._collectionParams(); // Append query parameters
 
     // Append the script to the document body to initiate the request

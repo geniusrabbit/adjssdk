@@ -124,7 +124,7 @@ export class Manager {
         // Initialize a new EmbeddedAd instance with the gathered configurations
         new EmbeddedAd({
           element: el,                        // The DOM element where the ad will be rendered
-          zone_id: slot,                      // The ad zone ID
+          spot_id: slot,                      // The ad zone ID
           JSONPLink: it.config.srcURL,        // The JSONP endpoint URL
           format: format,                     // The ad format (e.g., 'banner', 'native')
           fullWidth: fullWidth,               // Full-width responsiveness setting

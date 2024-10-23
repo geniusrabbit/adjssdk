@@ -156,15 +156,15 @@ To optimize page loading and ensure that all DOM elements are available when ini
     * The amgConfigure function accepts a callback function that receives a Manager instance (mn).
     * Within the callback, mn.setMapper is used to define how ads should be mapped and rendered.
     * Parameters:
-    * Selector ("ins.myads"): Targets all `<ins>` elements with the class myads.
+    * Selector (`"ins.myads"`): Targets all `<ins>` elements with the class `myads`.
     * Configuration Object:
-    * srcURL: Specifies the JSONP endpoint for fetching ad data. The `{<id>}` placeholder is replaced with the actual zone_id defined in the ad slot’s data-ad-slot attribute.
-    * dataParams (Optional): Maps HTML data- attributes to configuration parameters. This section is commented out but can be used if custom data attribute mappings are required.
+        * srcURL: Specifies the JSONP endpoint for fetching ad data. The `{<id>}` placeholder is replaced with the actual `spot_id` defined in the ad slot’s data-ad-slot attribute.
+        * dataParams (Optional): Maps HTML data- attributes to configuration parameters. This section is commented out but can be used if custom data attribute mappings are required.
 3. Ad Slot Definition:
     * The `<ins>` tag with class myads defines an ad slot.
-    * data-ad-slot contains the ad zone ID.
-    * data-ad-format specifies the ad format (auto, banner, native, etc.).
-    * data-full-width-responsive enables full-width responsiveness.
+    * `data-ad-slot` contains the ad spot ID.
+    * `data-ad-format` specifies the ad format (auto, banner, native, etc.).
+    * `data-full-width-responsive` enables full-width responsiveness.
     * Within the `<ins>` tag, `<script type="html/template" data-type="...">` tags define custom templates for different ad types.
 4. Placement:
     * Placing the initialization scripts at the bottom of the `<body>` ensures that all ad slots are loaded into the DOM before the SDK attempts to render ads. This approach can improve page performance and prevent rendering issues.
@@ -248,7 +248,7 @@ customRender.addTemplate('native', `
 // Create a new EmbeddedAd instance with custom settings and CustomRender
 const ad = new EmbeddedAd({
   element: 'ad-container',           // ID of the DOM element where the ad will be rendered
-  zone_id: 'zone123',                // Your ad zone ID
+  spot_id: 'spot123',                // Your ad spot ID
   JSONPLink: '<https://ads.example.com/getAd>', // Your JSONP endpoint
   render: customRender,              // Use the CustomRender instance
 });
@@ -391,7 +391,7 @@ customRender.addTemplate('banner', `...`);
 // Create a new EmbeddedAd instance with CustomRender
 const ad = new EmbeddedAd({
   element: 'ad-container',           // ID of the DOM element where the ad will be rendered
-  zone_id: 'zone123',                // Your ad zone ID
+  spot_id: 'spot123',                // Your ad spot ID
   JSONPLink: '<https://ads.example.com/getAd>', // Your JSONP endpoint
   render: customRender,              // Use the CustomRender instance
 });
