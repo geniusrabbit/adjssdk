@@ -21,7 +21,6 @@ export function renderTemplate(template, data) {
     const value = getValue(data, p1);
     return value ? p2 : '';
   });
-  console.log("=======!", template);
 
   // Replace variables {{var}} or {{object.property}}
   const variableRegex = /{{\s*([\w\.]+)\s*}}/g;
@@ -29,7 +28,6 @@ export function renderTemplate(template, data) {
     const value = getValue(data, p1);
     return value !== undefined && value !== null ? value : '';
   });
-  console.log("=======!", template);
 
   return template;
 }
