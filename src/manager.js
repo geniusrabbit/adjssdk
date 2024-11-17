@@ -43,7 +43,7 @@ import { EmbeddedAd } from './embedded.js'; // EmbeddedAd class for handling ads
 
 // Define the default configuration for ad mappers
 const defaultConfig = {
-  srcURL: "https://example.com", // Default source URL for JSONP requests
+  srcURL: process.env.ADSERVER_AD_JSONP_REQUEST_URL, // Default source URL for JSONP requests
   dataParams: {
     slot: "data-ad-slot",                 // Attribute for ad slot identification
     format: "data-ad-format",             // Attribute for ad format specification
