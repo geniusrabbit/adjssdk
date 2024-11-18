@@ -138,8 +138,7 @@ export class EmbeddedAd {
       }
     } else {
       // If no groups, use a default template to render the ad
-      let custom = this.settings.element.querySelector('script[type="html/template"][data-type=default]').innerHTML;
-      this.settings.render.html(custom, this.settings.element);
+      this.settings.render.default(this.settings.element);
     }
   }
 

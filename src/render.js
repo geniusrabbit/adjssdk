@@ -142,6 +142,15 @@ export class Render {
   }
 
   /**
+   * Renders a custom default template
+   * @param {HTMLElement} target - The DOM element where the ad will be rendered.
+   */
+  default(target) {
+    let custom = target.querySelector('script[type="html/template"][data-type=default]');
+    target.innerHTML = custom ? custom.innerHTML : '';
+  }
+
+  /**
    * Injects raw HTML into the target element. If the HTML contains <script> tags,
    * it safely injects the content within an iframe to prevent script execution in the main DOM.
    * @param {string} html - The HTML string to render.

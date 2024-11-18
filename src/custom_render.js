@@ -213,6 +213,22 @@ export class CustomRender {
   }
 
   /**
+   * Renders a default ad. Falls back to default rendering if no template is found.
+   * @param {HTMLElement} target - The DOM element where the ad will be rendered.
+   */
+  default(target) {
+    // Attempt to render using the 'default' template
+    let tmpl = this.renderTemplate('default', {});
+    if (!tmpl) {
+      // If template is not found, use the default Render class method
+      this._r.default(target);
+    } else {
+      // Otherwise, render the HTML using the custom template
+      this._r.html(tmpl, target);
+    }
+  }
+
+  /**
    * Renders raw HTML into the target element.
    * @param {string} html - The HTML string to render.
    * @param {HTMLElement} target - The DOM element where the HTML will be injected.
