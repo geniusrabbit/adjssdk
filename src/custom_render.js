@@ -146,6 +146,22 @@ export class CustomRender {
   }
 
   /**
+   * Renders a preloader for an ad slot. Falls back to default rendering if no template is found.
+   * @param {HTMLElement} target - The DOM element where the preloader will be rendered.
+   */
+  preload(target) {
+    // Attempt to render using the 'preload' template
+    let tmpl = this.renderTemplate('preload', {});
+    if (!tmpl) {
+      // If template is not found, use the default Render class method
+      this._r.preload(target);
+    } else {
+      // Otherwise, render the HTML using the custom template
+      this._r.html(tmpl, target);
+    }
+  }
+
+  /**
    * Renders a proxy ad. Falls back to default rendering if no template is found.
    * @param {Object} data - The ad data.
    * @param {HTMLElement} target - The DOM element where the ad will be rendered.

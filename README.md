@@ -254,15 +254,17 @@ const ad = new EmbeddedAd({
 });
 
 // Register event callbacks
-ad.on('loading', (data) => {
-  console.log('Ad is loading:', data);
-}).on('render', (success) => {
+ad.on('loading', (ad) => {
+  console.log('Ad is loading:');
+}).on('loaded', (ad, data) => {
+  console.log('Ad has finished loading:', data);
+}).on('render', (ad, data, success) => {
   if (success) {
     console.log('Ad rendered successfully.');
   } else {
     console.log('Ad rendering failed.');
   }
-}).on('error', (error) => {
+}).on('error', (ad, error) => {
   console.error('An error occurred while rendering the ad:', error);
 });
 

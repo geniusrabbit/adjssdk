@@ -64,6 +64,14 @@ export function assertByName(name, assets) {
  */
 export class Render {
   /**
+   * Renders a preloader for an ad slot.
+   * @param {HTMLElement} target - The DOM element where the preloader will be rendered.
+   */
+  preload(target) {
+    target.innerHTML = '';
+  }
+
+  /**
    * Renders a proxy advertisement.
    * @param {Object} data - The ad data containing content or URLs.
    * @param {HTMLElement} target - The DOM element where the ad will be rendered.
@@ -99,7 +107,7 @@ export class Render {
     var fields = data.fields;
     var asset = assertByName("main", data.assets);
     var tmpset = srcSetCSSThumbs(asset?.thumbs || []);
-    
+
     // Construct the native ad HTML template with dynamic data
     var template = '<div class="banner">' +
       '  <a target="_blank" href="' + prepareURL(data.url) + '" class="image">' +
@@ -113,7 +121,7 @@ export class Render {
       (fields.url ? '<a target="_blank" href="' + prepareURL(data.url) + '" class="url">' + fields.url + '</a>' : '') +
       '  </div>' +
       '</div>';
-    
+
     // Inject the constructed HTML into the target element
     target.innerHTML = template;
   }

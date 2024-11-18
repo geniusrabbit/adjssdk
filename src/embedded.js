@@ -11,15 +11,15 @@ const ad = new EmbeddedAd({
 });
 
 // Register event callbacks
-ad.on('loading', (data) => {
+ad.on('loading', (embeder, data) => {
   console.log('Ad is loading:', data);
-}).on('render', (success) => {
+}).on('render', (embeder, data, success) => {
   if (success) {
     console.log('Ad rendered successfully.');
   } else {
     console.log('Ad rendering failed.');
   }
-}).on('error', (error) => {
+}).on('error', (embeder, error) => {
   console.error('An error occurred while rendering the ad:', error);
 });
 
@@ -82,6 +82,7 @@ export class EmbeddedAd {
     // Initialize callback functions for different events
     this.callbacks = {
       onLoading: null,
+      onLoaded: null,
       onRender: null,
       onError: null,
     };
@@ -96,6 +97,9 @@ export class EmbeddedAd {
   on(event, callback) {
     if (event === 'loading') {
       this.callbacks.onLoading = callback;
+    }
+    if (event === 'loaded') {
+      this.callbacks.onLoaded = callback;
     }
     if (event === 'render') {
       this.callbacks.onRender = callback;
@@ -205,6 +209,14 @@ export class EmbeddedAd {
    * Loads the ad content via a JSONP request
    */
   _load() {
+    if (typeof this.settings.onLoading === 'function') {
+      // Trigger the onLoading callback if defined
+      this.settings.onLoading(this);
+    }
+
+    // Render a preloader in the target element
+    this.settings.render.preload(this.settings.element);
+
     // Generate a unique callback name for the JSONP request
     this.JSONPCallbackName = '_cbf_' + this._randomString(7);
 
@@ -268,8 +280,8 @@ export class EmbeddedAd {
   _JSONPCallback(data) {
     try {
       // Trigger the onLoading callback if defined
-      if (typeof this.callbacks.onLoading === 'function') {
-        this.callbacks.onLoading(data);
+      if (typeof this.callbacks.onLoaded === 'function') {
+        this.callbacks.onLoaded(this, data);
       }
 
       // Render the ad based on the response data
@@ -277,7 +289,7 @@ export class EmbeddedAd {
 
       // Trigger the onRender callback if defined
       if (typeof this.callbacks.onRender === 'function') {
-        this.callbacks.onRender(!!data);
+        this.callbacks.onRender(this, data, !!data);
       }
 
       // Remove the JSONP script tag from the DOM
@@ -291,7 +303,7 @@ export class EmbeddedAd {
 
       // Trigger the onError callback if defined
       if (typeof this.callbacks.onError === 'function') {
-        this.callbacks.onError(err);
+        this.callbacks.onError(this, err);
       } else {
         // If no onError callback, rethrow the error
         throw err;
