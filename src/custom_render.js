@@ -75,12 +75,12 @@ export class CustomRender {
   /**
    * Constructor initializes the templates array and an instance of the Render class.
    */
-  constructor() {
+  constructor(render) {
     // Array to store templates with their corresponding names
     this._templates = [];
     
     // Instance of the Render class to handle default rendering
-    this._r = new Render();
+    this._r = render ?? new Render();
   }
 
   /**

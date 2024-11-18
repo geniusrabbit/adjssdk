@@ -109,7 +109,7 @@ export class Render {
     var tmpset = srcSetCSSThumbs(asset?.thumbs || []);
 
     // Construct the native ad HTML template with dynamic data
-    var template = '<div class="banner">' +
+    var template = '<div class="banner native">' +
       '  <a target="_blank" href="' + prepareURL(data.url) + '" class="image">' +
       '    <img alt="main" style="object-fit:cover;width:100%;height:100%;" src="' + asset.path + '" srcset="' + srcSetThumbs(asset.thumbs) + '" />' +
       '  </a>' +

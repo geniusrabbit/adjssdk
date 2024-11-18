@@ -50,8 +50,10 @@ const defaultConfig = {
     fullWidth: "data-full-width-responsive", // Attribute for full-width responsiveness
   },
   on: {
-    error: null,    // Callback for error events
+    render: null,   // Callback for render events
     loading: null,  // Callback for loading events
+    loaded: null,   // Callback for loaded events
+    error: null,    // Callback for error events
   },
   render: undefined, // Default render instance (can be overridden)
 };
@@ -100,10 +102,19 @@ export class Manager {
         let format = el.getAttribute(it.config.dataParams.format);
         let fullWidth = el.getAttribute(it.config.dataParams.fullWidth);
 
+        // Create container for the ad if not already present
+        el.querySelectorAll(".promo-block-container").forEach((container) => {
+          container.remove();
+        });
+
+        let container = document.createElement("div");
+        container.classList.add("promo-block-container");
+        el.appendChild(container);
+
         // Initialize a new CustomRender instance for potential custom templates
         let customRender = it.config.render && it.config.render.addTemplate
                          ? it.config.render.clone()
-                         : new CustomRender();
+                         : new CustomRender(it.config.render);
         let initedRender = false; // Flag to check if any custom templates are added
 
         // Search for script tags containing HTML templates within the ad container
@@ -123,7 +134,7 @@ export class Manager {
 
         // Initialize a new EmbeddedAd instance with the gathered configurations
         new EmbeddedAd({
-          element: el,                        // The DOM element where the ad will be rendered
+          element: container,                        // The DOM element where the ad will be rendered
           spot_id: slot,                      // The ad zone ID
           JSONPLink: it.config.srcURL,        // The JSONP endpoint URL
           format: format,                     // The ad format (e.g., 'banner', 'native')
@@ -131,7 +142,9 @@ export class Manager {
           render: initedRender ? customRender : it.config.render, // Use CustomRender if templates are initialized
         })
           // Register event callbacks as specified in the mapper's configuration
+          .on('render', it.config.on.render)
           .on('loading', it.config.on.loading)
+          .on('loaded', it.config.on.loaded)
           .on('error', it.config.on.error)
           // Initiate the ad rendering process
           .render();
