@@ -2,7 +2,7 @@
 export function prepareURL(url) {
   if (url.startsWith("//")) {
     if (window.location.protocol !== "http:" && window.location.protocol !== "https:") {
-      return "http:" + url;
+      return "https:" + url;
     }
     return window.location.protocol + url;
   }

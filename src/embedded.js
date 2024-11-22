@@ -188,18 +188,23 @@ export class EmbeddedAd {
 
       // Create an image request for each tracking URL
       for (var j in arr) {
-        var img = new Image();
-        // Set the image source to trigger the tracking request
-        img.src = prepareURL(arr[j]);
+        try {
+          let img = new Image();
+          // Set the image source to trigger the tracking request
+          img.src = prepareURL(arr[j]);
 
-        // The following lines are commented out but can be used to hide the tracking image
-        // img.onload = function() { document.body.removeChild(this) };
-        // img.style.position = 'absolute';
-        // img.style.width = '1px';
-        // img.style.height = '1px';
-        // img.style.top = '-100px';
-        // img.style.left = '-100px';
-        // document.body.appendChild(img);
+          // The following lines are commented out but can be used to hide the tracking image
+          // img.onload = function() { document.body.removeChild(this) };
+          // img.style.position = 'absolute';
+          // img.style.width = '1px';
+          // img.style.height = '1px';
+          // img.style.top = '-100px';
+          // img.style.left = '-100px';
+          // document.body.appendChild(img);
+        } catch (err) {
+          // Log any errors during tracking image creation
+          console.debug("tracking-image", err);
+        }
       }
     }
   }
