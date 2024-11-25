@@ -611,6 +611,16 @@ adManager.execute();
 
 ## License
 
-This project is licensed under the MIT License.
+[LICENSE](LICENSE)
 
-Note: Ensure that all paths in the `<script>` tags and import statements correctly point to the respective JavaScript modules in your project structure. Adjust the URLs and configurations as needed to match your ad server endpoints and ad slot identifiers.
+Copyright 2024 Dmitry Ponomarev & Geniusrabbit
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+
+<http://www.apache.org/licenses/LICENSE-2.0>
+
+Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+
+## Note
+
+Ensure that all paths in the `<script>` tags and import statements correctly point to the respective JavaScript modules in your project structure. Adjust the URLs and configurations as needed to match your ad server endpoints and ad slot identifiers.
