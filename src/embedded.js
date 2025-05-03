@@ -127,16 +127,19 @@ export class EmbeddedAd {
    * @param {Object} response - The JSONP response data
    */
   _renderResponse(response) {
+    var noAd = true;
     if (response.groups && response.groups.length > 0) {
       // Iterate through each ad group in the response
       for (var i in response.groups) {
         var group = response.groups[i];
         // Iterate through each item in the group and render it
         for (var j in group.items) {
+          noAd = false;
           this._renderItem(group.items[j]);
         }
       }
-    } else {
+    } 
+    if (noAd) {
       // If no groups, use a default template to render the ad
       this.settings.render.default(this.settings.element);
     }
